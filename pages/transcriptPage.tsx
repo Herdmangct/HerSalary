@@ -1,8 +1,10 @@
 import { AnimatePresence, motion } from "framer-motion";
 import Link from "next/link";
-import SimpleForm from './simpleForm';
+import { useState } from 'react';
 
 export default function Form() {
+  const [isLoaded, setIsLoaded] = useState(false);  // Initialize isLoaded to false
+
   return (
     <AnimatePresence>
         <div className="flex flex-col md:flex-row w-full md:overflow-hidden">
@@ -19,14 +21,12 @@ export default function Form() {
                     }}
                     className="max-w-lg mx-auto px-4 lg:px-0"
                 >
-                    <h2 className="text-4xl font-bold text-[#1E2B3A]">
-                    Please fill in your personal information
-                    </h2>
-                    <p className="text-[14px] leading-[20px] text-[#1a2b3b] font-normal my-4">
-                    This is so that we can personalise your negotiation transcripts as much as possible.
-                    If you are uncomfortable with sharing this information, just write N/A or choose N/A. 
-                    </p>
-                    <SimpleForm />
+                    { // Your switch or if-else logic here
+                        !isLoaded ?
+                        <div className="loader">Loading...</div>
+                        :
+                        <div className="transcript">Transcript here</div>
+                    }
                     <div className="flex gap-[15px] justify-end mt-8">
                     <div>
                         <Link
@@ -36,11 +36,11 @@ export default function Form() {
                             boxShadow: "0 1px 1px #0c192714, 0 1px 3px #0c192724",
                         }}
                         >
-                        Back to home
+                        Back to form
                         </Link>
                     </div>
                     <div>
-                        <Link href="/transcriptPage">
+                        <Link href="/demo">
                         <button
                         className="group rounded-full px-4 py-2 text-[13px] font-semibold transition-all flex items-center justify-center bg-[#1E2B3A] text-white hover:[linear-gradient(0deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.1)), #0D2247] no-underline flex gap-x-2  active:scale-95 scale-100 duration-75"
                         style={{
