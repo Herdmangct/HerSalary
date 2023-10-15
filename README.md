@@ -1,5 +1,5 @@
 <a href="https://demo.useliftoff.com">
-  <img src="https://www.dictionary.com/e/wp-content/uploads/2021/03/20210303_atw_female_1000x700.png">
+  <img src="/slideScreenShot.png">
   <h1 align="center">HerSalary</h1>
 </a>
 
