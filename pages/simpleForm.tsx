@@ -1,7 +1,21 @@
 import { useRouter } from 'next/router';
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import Papa from 'papaparse';
 
 export default function SimpleForm() {
+    const [jobTypes, setJobTypes] = useState([]);
+
+    useEffect(() => {
+        Papa.parse('/average_salaries.csv', {
+          header: true,
+          download: true,
+          dynamicTyping: true,
+          complete: function (results) {
+            setJobTypes(results.data);
+          }
+        });
+      }, []);
+
     const [isLoading, setIsLoading] = useState(false);
 
     const [formData, setFormData] = useState({
@@ -20,10 +34,17 @@ export default function SimpleForm() {
         desiredSalary: '',
       });
 
-  const handleChange = (e) => {
+    const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData({ ...formData, [name]: value });
-  };
+    
+    if (name === 'jobTitle') {
+        const selectedJob = jobTypes.find(job => job.job_type === value);
+        if (selectedJob) {
+        setFormData({ ...formData, jobTitle: value, salaryBenchmark: selectedJob.average_salary });
+        }
+    }
+    };
 
   const router = useRouter();
 
@@ -124,14 +145,27 @@ export default function SimpleForm() {
             onChange={handleChange}
             className="border p-2 rounded"
         />
-        <input
+        {/* <input
             type="text"
             name="jobTitle"
             placeholder="Job Title"
             value={formData.jobTitle}
             onChange={handleChange}
             className="border p-2 rounded"
-        />
+        /> */}
+        <select
+        name="jobTitle"
+        value={formData.jobTitle}
+        onChange={handleChange}
+        className="border p-2 rounded"
+        >
+        <option value="" disabled>Select a Job Title</option>
+        {jobTypes.map((job, index) => (
+            <option key={index} value={job.job_type}>
+            {job.job_type}
+            </option>
+        ))}
+        </select>
         <input
             type="text"
             name="company"
@@ -165,13 +199,21 @@ export default function SimpleForm() {
             className="border p-2 rounded"
         />
         <input
+        type="text"
+        name="salaryBenchmark"
+        placeholder="Salary Benchmark"
+        value={formData.salaryBenchmark}
+        readOnly
+        className="border p-2 rounded"
+        />
+        {/* <input
             type="text"
             name="salaryBenchmark"
             placeholder="Salary Benchmark"
             value={formData.salaryBenchmark}
             onChange={handleChange}
             className="border p-2 rounded"
-        />
+        /> */}
         <input
             type="text"
             name="specialSkills"
