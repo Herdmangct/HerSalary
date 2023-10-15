@@ -4,7 +4,7 @@
 </a>
 
 <p align="center">
-  AI-powered Negogiation coach
+  AI-powered salary negotiation coach
 </p>
 
 <p align="center">
