@@ -158,7 +158,7 @@ export default function DemoPage() {
       formData.append("file", output, `${unique_id}.mp3`);
       formData.append("model", "whisper-1");
 
-      const question = localStorage.getItem('firstBossLine');
+      const question = localStorage.getItem('firstBossLine') ? localStorage.getItem('firstBossLine') : '';
 
       setStatus("Transcribing");
 
