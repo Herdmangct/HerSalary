@@ -1,7 +1,7 @@
-<a href="https://demo.useliftoff.com">
-  <img src="/slideScreenShot.png">
-  <h1 align="center">HerSalary</h1>
-</a>
+
+<img src="./slideScreenShot.png">
+<h1 align="center">HerSalary</h1>
+
 
 <p align="center">
   AI-powered salary negotiation coach
