@@ -195,7 +195,7 @@ export default function DemoPage() {
           You are a helpful bot here to improve the users salary negotiation skills. The boss has just asked ${question} 
           and our user has responded with ${
             results.transcript
-          }. ${
+          }. these are the first 2 lines of the negotiation ${
             "Please give feedback on the candidate's communication skills. Encourage them where possible"
           } \n\n\ Feedback on the candidate's response:`;
 

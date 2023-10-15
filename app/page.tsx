@@ -203,7 +203,7 @@ export default function Home() {
         </main>
 
         <div
-          className="fixed top-0 right-0 w-[80%] md:w-1/2 h-screen bg-[#1F2B3A]/20"
+          className="fixed top-0 right-0 w-[80%] md:w-1/2 h-screen bg-[#648c7f]"
           style={{
             clipPath:
               "polygon(100px 0,100% 0,calc(100% + 225px) 100%, 480px 100%)",
@@ -227,9 +227,9 @@ export default function Home() {
           }}
           id="gradient-canvas"
           data-transition-in
-          className="z-50 fixed top-0 right-[-2px] w-[80%] md:w-1/2 h-screen bg-[#c3e4ff]"
+          className="z-50 fixed top-0 right-[-2px] w-[80%] md:w-1/2 h-screen bg-[#648c7f]"
         ></motion.canvas>
-        <div className="h-[60px] bg-[#1D2B3A] fixed bottom-0 z-20 w-full flex flex-row items-center justify-evenly">
+        <div className="h-[60px] bg-[#648c7f] fixed bottom-0 z-20 w-full flex flex-row items-center justify-evenly">
           <p className="text-white/80 text-base md:text-lg font-semibold md:leading-[60px] whitespace-nowrap flex flex-row">
             Used by employees at
           </p>

@@ -49,8 +49,8 @@ export default function Form() {
                 <span key={index}>
                     {index > 0 && <br />}
                     {name ? 
-                        (<span className="font-bold text-blue-600">{name}:</span>) :
-                        (<span className="font-bold text-blue-600">{name}</span>)
+                        (<span className="font-bold text-[#365b6d]">{name}:</span>) :
+                        (<span className="font-bold text-[#365b6d]">{name}</span>)
                     }
                     {dialogue}
                 </span>
