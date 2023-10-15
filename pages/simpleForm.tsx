@@ -12,7 +12,7 @@ export default function SimpleForm() {
           download: true,
           dynamicTyping: true,
           complete: function (results) {
-            setJobTypes(results.data);
+            setJobTypes(results.data as any);
           }
         });
       }, []);
@@ -35,12 +35,12 @@ export default function SimpleForm() {
         desiredSalary: '',
       });
 
-    const handleChange = (e) => {
+    const handleChange = (e: any) => {
     const { name, value } = e.target;
     setFormData({ ...formData, [name]: value });
     
     if (name === 'jobTitle') {
-        const selectedJob = jobTypes.find(job => job.job_type === value);
+        const selectedJob: any = jobTypes.find(job => (job as any).job_type === value);
         if (selectedJob) {
         setFormData({ ...formData, jobTitle: value, salaryBenchmark: selectedJob.average_salary });
         }
@@ -49,7 +49,7 @@ export default function SimpleForm() {
 
   const router = useRouter();
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = async (e: any) => {
     e.preventDefault();
 
     const payload = {
@@ -163,7 +163,7 @@ export default function SimpleForm() {
         className="border p-2 rounded"
         >
         <option value="" disabled>Select a Job Title</option>
-        {jobTypes.map((job, index) => (
+        {jobTypes.map((job: any, index) => (
             <option key={index} value={job.job_type}>
             {job.job_type}
             </option>
