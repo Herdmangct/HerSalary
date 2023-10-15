@@ -16,7 +16,8 @@
 
 ## Introduction
 
-HerSalary is a Salary negotiation tool for women to negotiate their salary.
+HerSalary is a salary negotiation coach for women to help them get paid equally to men.
+This aligns with our goal of solving the UNs SGD 5: Gender Equality
 
 ## Tech Stack + Features
 
@@ -47,6 +48,11 @@ HerSalary is a Salary negotiation tool for women to negotiate their salary.
 - [FFMPEG.WASM](https://ffmpegwasm.netlify.app/) – Transcode video/audio files
 - [React Webcam](https://github.com/mozmorris/react-webcam) - Webcam component for React
 - [Stripe Gradient Animation](https://whatamesh.vercel.app/) - [@jordienr](https://twitter.com/jordienr) released a Mesh Gradient that uses WebGL and animates a beautiful gradient
+
+## Future Work
+- This is an opensource project created for the TED AI hackathon. Please feel free to add any features you feel will help the goal of reducing gender inequality
+- We would like to extend the interactive demo at the end so that it plays through the entire transcript 
+- We would like to offer multiple transcripts
 
 ## Credit
 

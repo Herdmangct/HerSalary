@@ -163,7 +163,7 @@ export default function DemoPage() {
       setStatus("Transcribing");
 
       const upload = await fetch(
-        `/api/transcribe?question=${encodeURIComponent(question)}`,
+        `/api/transcribe?question=${question ? encodeURIComponent(question) : ''}`,
         {
           method: "POST",
           body: formData,
