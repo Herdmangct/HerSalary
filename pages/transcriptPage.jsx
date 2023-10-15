@@ -10,18 +10,54 @@ export default function Form() {
 
   if (storedData) {
       const parsedData = JSON.parse(storedData);
+      localStorage.setItem('transcript', parsedData.choices[0].message.content);
       setTranscript(parsedData.choices[0].message.content);
   }
    }, []);
 
-   const renderTranscript = () => {
-    return transcript?.split(/(Helene:|Nick:)/)?.map((part, index) => {
-      if (index % 2 === 1) {
-        return <span><br/><br/><span className="font-bold text-blue-600">{part}</span></span>
-      }
-      return <span>{part}</span>
-    })
-   }
+    // const renderTranscript = () => {
+    //     const parts = transcript?.split(/\n/);
+    //     return parts?.map((line, index) => {
+    //     const [name, dialogue] = line.split(":");
+    //     index == 2 ? localStorage.setItem('firstBossLine', dialogue) : null;
+    //     return (
+    //         <span key={index}>
+    //         {index > 0 && <br />}
+    //         {name ? 
+    //             (<span className="font-bold text-blue-600">{name}:</span>) :
+    //             (<span className="font-bold text-blue-600">{name}</span>)
+    //         }
+    //         {dialogue}
+    //         </span>
+    //     );
+    //     });
+    // };
+
+    const renderTranscript = () => {
+        const parts = transcript?.split(/\n/);
+        const storedLines = JSON.parse(localStorage.getItem('transcriptLines') || '[]');
+    
+        parts?.forEach((line, index) => {
+            storedLines.push(line);
+        });
+    
+        localStorage.setItem('transcriptLines', JSON.stringify(storedLines));
+    
+        return parts?.map((line, index) => {
+            const [name, dialogue] = line.split(":");
+            return (
+                <span key={index}>
+                    {index > 0 && <br />}
+                    {name ? 
+                        (<span className="font-bold text-blue-600">{name}:</span>) :
+                        (<span className="font-bold text-blue-600">{name}</span>)
+                    }
+                    {dialogue}
+                </span>
+            );
+        });
+    };
+    
 
   return (
     <AnimatePresence>
@@ -39,6 +75,7 @@ export default function Form() {
                     }}
                     className="max-w-lg mx-auto px-4 lg:px-0"
                 >
+                    <h1 className="text-[#1E2B3A] text-[24px] font-bold text-center mb-4">Custom Transcript</h1>
                     { renderTranscript() }
                     <div className="flex gap-[15px] justify-end mt-8">
                     <div>

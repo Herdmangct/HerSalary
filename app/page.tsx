@@ -52,8 +52,8 @@ export default function Home() {
             className="relative md:ml-[-10px] md:mb-[37px] font-extrabold text-[16vw] md:text-[130px] font-inter text-[#1E2B3A] leading-[0.9] tracking-[-2px] z-[100]"
           >
             Get paid <br />
-            your <span className="text-[#407BBF]">worth</span>
-            <span className="font-inter text-[#407BBF]">.</span>
+            your <span className="text-[#648c7f]">worth</span>
+            <span className="font-inter text-[#648c7f]">.</span>
           </motion.h1>
           <motion.div
             initial={{ opacity: 0, y: 40 }}
@@ -231,7 +231,7 @@ export default function Home() {
         ></motion.canvas>
         <div className="h-[60px] bg-[#1D2B3A] fixed bottom-0 z-20 w-full flex flex-row items-center justify-evenly">
           <p className="text-white/80 text-base md:text-lg font-semibold md:leading-[60px] whitespace-nowrap flex flex-row">
-            Interviews from
+            Used by employees at
           </p>
           <svg
             className="w-[20px] opacity-80"
