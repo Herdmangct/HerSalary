@@ -1,9 +1,27 @@
 import { AnimatePresence, motion } from "framer-motion";
 import Link from "next/link";
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 
 export default function Form() {
-  const [isLoaded, setIsLoaded] = useState(false);  // Initialize isLoaded to false
+  const [transcript, setTranscript] = useState(null);
+
+  useEffect(() => {
+  const storedData = localStorage.getItem('responseData');
+
+  if (storedData) {
+      const parsedData = JSON.parse(storedData);
+      setTranscript(parsedData.choices[0].message.content);
+  }
+   }, []);
+
+   const renderTranscript = () => {
+    return transcript?.split(/(Helene:|Nick:)/)?.map((part, index) => {
+      if (index % 2 === 1) {
+        return <span><br/><br/><span className="font-bold text-blue-600">{part}</span></span>
+      }
+      return <span>{part}</span>
+    })
+   }
 
   return (
     <AnimatePresence>
@@ -21,12 +39,7 @@ export default function Form() {
                     }}
                     className="max-w-lg mx-auto px-4 lg:px-0"
                 >
-                    { // Your switch or if-else logic here
-                        !isLoaded ?
-                        <div className="loader">Loading...</div>
-                        :
-                        <div className="transcript">Transcript here</div>
-                    }
+                    { renderTranscript() }
                     <div className="flex gap-[15px] justify-end mt-8">
                     <div>
                         <Link
